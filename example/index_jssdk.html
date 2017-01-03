@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+    <title>websocket client</title>
+</head>
+<body>
+    <form id="sendForm">
+        <div>浏览器软电话</div>
+        <div>
+            <button onclick="answer()" type="button">接听</button>
+            <button onclick="hangup()" type="button">挂断</button>
+            <button onclick="getCurrentVolume()" type="button">获取当前振声器音量</button>
+            <button onclick="getCurrentMicroVolume()" type="button">获取当前麦克风音量</button>
+        </div>
+        <br/>
+        <div>
+            <label for="">调节振声器音量</label>
+            <br/>
+            <input type="text" value=""  id="volumeText" />
+            <button onclick="setVolume()" type="button">调节</button>
+        </div>
+        <br/>
+        <br/>
+        <div>
+            <label for="">调节振声器音量</label>
+            <br/>
+            <input type="text" value="" id="volumeMircoText" />
+            <button onclick="setMircoVolume()" type="button">调节</button>
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        <input id="sendText" placeholder="Text to send" style="width: 400px;"/>
+        <button onclick="send()" type="button">发送</button>
+        <button onclick="clean()" type="button">清空</button>
+    </form>
+    <pre id="incomming"></pre>
+</body>
+<script src="../dist/oneyun-client-js.js"> </script>
+<script type="text/javascript">
+
+var client = new OneyunJSClient('ws://127.0.0.1:2000/')
+var inc = document.getElementById('incomming');
+
+inc.innerHTML += "connecting to server ..<br/>";
+// when data is comming from the server, this metod is called
+client.ws.onmessage = function (evt) {
+  inc.innerHTML += evt.data + '<br/>';
+};
+
+// when the connection is established, this method is called
+client.ws.onopen = function () {
+  inc.innerHTML += '.. connection open<br/>';
+};
+
+// when the connection is closed, this method is called
+client.ws.onclose = function () {
+  inc.innerHTML += '.. connection closed<br/>';
+};
+
+function answer() {
+  client.answer()
+}
+
+function hangup() {
+  client.hangup()
+}
+
+// 设置扬声器音量
+function setVolume() {
+  var value = getValById('volumeText')
+  client.setVolume(value)
+}
+
+// 设置麦克风音量
+function setMircoVolume() {
+  var value = getValById('volumeMircoText')
+  client.setMicroVolume(value)
+}
+
+// 获取扬声器音量
+function getCurrentVolume() {
+  client.getCurrentVolume()
+}
+
+// 获取麦克风音量
+function getCurrentMicroVolume() {
+  client.getCurrentMicroVolume()
+}
+
+function getValById(Id){
+  return document.getElementById(Id).value
+}
+
+</script>
+</html>

@@ -1,0 +1,16 @@
+{
+  "extends": ["eslint:recommended", "google"],
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "rules": {
+    "no-useless-escape": 0,
+    "no-trailing-spaces": 2,
+    "semi": ["error", "never"],
+    "require-jsdoc": 0
+  }
+}
