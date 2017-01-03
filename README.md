@@ -8,9 +8,27 @@ SIP 客户端的 JS SDK
 
 
 
-```js
+已用 [UMD](https://github.com/umdjs/umd#readme) 包装，因此它们可以直接用作 AMD 模块
+
+
+
+AMD
+
+```html
+// 引入文件
+<script src="./node_modules/oneyun-sipclient-desktop-js-sdk/dist/oneyun-client-js.js"> </script>
+
 // 创建实例
-let Client = new OneYunJsSipClient('ws://192.168.10.75:2000/')
+var Client = new OneYunJsSipClient('ws://192.168.10.75:2000/')
+```
+
+
+
+CMD
+
+```js
+import JsClient from 'oneyun-sipclient-desktop-js-sdk'
+let Client = new jsClient('ws://192.168.10.75:2000/')
 ```
 
 
@@ -81,3 +99,8 @@ Client.ws.onmessage = function (result) {
   ...result
 };
 ```
+
+
+
+[查看案例](https://github.com/liushuixingyun/oneyun-sipclient-desktop-js-sdk/blob/master/example/index_jssdk.html)
+
