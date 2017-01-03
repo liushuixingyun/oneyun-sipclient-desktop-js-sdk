@@ -1,4 +1,6 @@
-# JS SDK
+# JS SDK [![Version](https://img.shields.io/npm/v/oneyun-sipclient-desktop-js-sdk.svg)](https://www.npmjs.com/package/oneyun-sipclient-desktop-js-sdk)
+
+
 
 SIP 客户端的 JS SDK
 
@@ -103,4 +105,3 @@ Client.ws.onmessage = function (result) {
 
 
 [查看案例](https://github.com/liushuixingyun/oneyun-sipclient-desktop-js-sdk/blob/master/example/index_jssdk.html)
-
