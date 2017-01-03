@@ -43,20 +43,36 @@ var client = new OneyunJSClient('ws://127.0.0.1:2000/')
 var inc = document.getElementById('incomming');
 
 inc.innerHTML += "connecting to server ..<br/>";
-// when data is comming from the server, this metod is called
-client.ws.onmessage = function (evt) {
-  inc.innerHTML += evt.data + '<br/>';
-};
 
-// when the connection is established, this method is called
-client.ws.onopen = function () {
-  inc.innerHTML += '.. connection open<br/>';
-};
+function reconnect() {
+    try {
+      client._createWS('ws://127.0.0.1:2000/')
+    } catch (e) {
+      console.log('等待连接')
+    }
+
+    // when the connection is established, this method is called
+    client.ws.onopen = function () {
+      inc.innerHTML += '.. connection open<br/>';
+    };
+
+    // when data is comming from the server, this metod is called
+    client.ws.onmessage = function (evt) {
+      inc.innerHTML += evt.data + '<br/>';
+    };
+    client.ws.onclose = function(){
+        //try to reconnect in 5 seconds
+        inc.innerHTML += '.. connection closed<br/>';
+        setTimeout(function(){reconnect()}, 5000);
+    };
+}
+
+reconnect()
 
 // when the connection is closed, this method is called
-client.ws.onclose = function () {
-  inc.innerHTML += '.. connection closed<br/>';
-};
+// client.ws.onclose = function () {
+//   inc.innerHTML += '.. connection closed<br/>';
+// };
 
 function answer() {
   client.answer()
