@@ -1,4 +1,3 @@
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9a25fe6723d647e9ac9c171b3c0270a0)](https://www.codacy.com/app/liushuixingyun/oneyun-sipclient-desktop-js-sdk?utm_source=github.com&utm_medium=referral&utm_content=liushuixingyun/oneyun-sipclient-desktop-js-sdk&utm_campaign=badger)
 # JS SDK [![Version](https://img.shields.io/npm/v/oneyun-sipclient-desktop-js-sdk.svg)](https://www.npmjs.com/package/oneyun-sipclient-desktop-js-sdk)
 
 
