@@ -33,67 +33,51 @@ var Client = new OneYunJsSipClient('ws://192.168.10.75:2000/')
 
 ## 接口
 
-应答
-
-```js
-// 调用
-Client.answer()
-```
-
-挂断
-
-```js
-Client.hangup()
-```
-
-窗口最小化
-
-```js
-Client.minimize()
-```
-
-窗体最大化
-
-```js
-Client.show()
-```
-
-音量控制
-
-
-| 方法                    | 参数           | 说明              |
-| --------------------- | ------------ | --------------- |
-| getCurrentVolume      | 无            | 获取当前振声器         |
-| getCurrentMicroVolume | 无            | 获取当前麦克风         |
+| 方法                  | 参数         | 说明                     |
+|-----------------------|--------------|--------------------------|
+| answer                | 无           | 应答                     |
+| hangup                | 无           | 挂断                     |
+| minimize              | 无           | 窗口最小化               |
+| show                  | 无           | 窗口最大化               |
+| getCurrentVolume      | 无           | 获取当前振声器           |
+| getCurrentMicroVolume | 无           | 获取当前麦克风           |
 | setVolume             | {int} volume | 设置当前振声器音量 0-100 |
 | setMicroVolume        | {Int} volume | 设置当前麦克风音量 0-100 |
 
 用法
 
 ```js
+Client.answer()
+Client.hangup()
 Client.getCurrentVolume()
 Client.setVolume(20)
 ```
 
-
-
-### 响应
-
+## 响应 & 事件
 
 ```js
 // 成功返回
 {"jsonrpc":"2.0","result":"","id":1}
+// 收到事件
+{"jsonrpc":"2.0","result": {"events": "hangup"},"id":1}
 
 // 失败返回
 {"jsonrpc":"2.0","result":"失败原因","id":1}
 ```
 
+事件列表
+
+| 事件      | 说明       |
+|-----------|------------|
+| "hangup"  | 挂断事件   |
+| "answer"  | 来电事件   |
+| "calling" | 通话中事件 |
 
 需要注意的是，这里的结果返回是在`websocket` 回调中获取
 
 ```js
-Client.ws.onmessage = function (result) {
-  ...result
+Client.ws.onmessage = function (callback) {
+  ...callback
 };
 ```
 
