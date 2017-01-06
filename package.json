@@ -5,6 +5,7 @@
   "main": "dist/oneyun-client-js.js",
   "scripts": {
     "build": "node build/build.js",
+    "publish": "npm publish --registry http://registry.npmjs.org",
     "_comment": "jasmine JASMINE_CONFIG_PATH=test/jasmine.json"
   },
   "repository": {
