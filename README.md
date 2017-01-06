@@ -56,6 +56,25 @@ Client.hangup()
 
 
 
+### 窗口最小化
+
+
+
+```js
+Client.minimize()
+```
+
+
+
+### 窗体最大化
+
+
+
+```js
+Client.show()
+```
+
+
 ### 音量控制
 
 

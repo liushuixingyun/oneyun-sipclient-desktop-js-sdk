@@ -38,8 +38,16 @@ export default class Initrailler {
   setVolume(number) {
     this._send('setVolume', number)
   }
-
   setMicroVolume(number) {
     this._send('setMicroVolume', number)
   }
+
+  minimize() {
+    this._send('minimize')
+  }
+
+  show() {
+    this._send('show')
+  }
+
 }

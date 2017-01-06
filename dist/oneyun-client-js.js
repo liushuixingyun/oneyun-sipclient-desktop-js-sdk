@@ -132,6 +132,14 @@ var Initrailler = function () {
     this._send('setMicroVolume', number);
   };
 
+  Initrailler.prototype.minimize = function minimize() {
+    this._send('minimize');
+  };
+
+  Initrailler.prototype.show = function show() {
+    this._send('show');
+  };
+
   return Initrailler;
 }();
 
