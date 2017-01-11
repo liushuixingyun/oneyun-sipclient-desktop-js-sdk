@@ -18,6 +18,18 @@ export default class Initrailler {
       })
     )
   }
+  
+  onopen() {
+    return this.ws.onopen
+  }
+  
+  onclose() {
+    return this.ws.onclose
+  }
+  
+  onmessage() {
+    return this.ws.onmessage
+  }
 
   answer() {
     this._send('answer')
