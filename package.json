@@ -1,15 +1,16 @@
 {
   "name": "oneyun-sipclient-desktop-js-sdk",
-  "version": "0.1.0",
+  "version": "0.1.3",
   "description": "onyun node sdk",
   "main": "dist/oneyun-client-js.js",
   "scripts": {
     "build": "node build/build.js",
+    "publish": "npm publish --registry http://registry.npmjs.org",
     "_comment": "jasmine JASMINE_CONFIG_PATH=test/jasmine.json"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/liushuixingyun/oneyun-server-api-nodejs.git"
+    "url": "git+https://github.com/liushuixingyun/oneyun-sipclient-desktop-js-sdk.git"
   },
   "keywords": [
     "oneyun",
@@ -18,9 +19,9 @@
   "author": "lluvio",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/liushuixingyun/oneyun-server-api-nodejs/issues"
+    "url": "https://github.com/liushuixingyun/oneyun-sipclient-desktop-js-sdk/issues"
   },
-  "homepage": "https://github.com/liushuixingyun/oneyun-server-api-nodejs#readme",
+  "homepage": "https://github.com/liushuixingyun/oneyun-sipclient-desktop-js-sdk#readme",
   "devDependencies": {
     "babel-core": "6.18.2",
     "babel-preset-es2015": "6.18.0",

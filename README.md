@@ -1,20 +1,27 @@
 # JS SDK [![Version](https://img.shields.io/npm/v/oneyun-sipclient-desktop-js-sdk.svg)](https://www.npmjs.com/package/oneyun-sipclient-desktop-js-sdk)
 
-
-
 SIP 客户端的 JS SDK
 
 
+## 准备
 
-### 初始化
 
+安装
 
+```js
+npm install oneyun-sipclient-desktop-js-sdk --save-dev
+```
+
+使用 CMD
+
+```js
+import JsClient from 'oneyun-sipclient-desktop-js-sdk'
+let Client = new jsClient('ws://192.168.10.75:2000/')
+```
 
 已用 [UMD](https://github.com/umdjs/umd#readme) 包装，因此它们可以直接用作 AMD 模块
 
-
-
-AMD
+使用 AMD
 
 ```html
 // 引入文件
@@ -24,84 +31,54 @@ AMD
 var Client = new OneYunJsSipClient('ws://192.168.10.75:2000/')
 ```
 
+## 接口
 
-
-CMD
-
-```js
-import JsClient from 'oneyun-sipclient-desktop-js-sdk'
-let Client = new jsClient('ws://192.168.10.75:2000/')
-```
-
-
-
-### 应答
-
-
-
-```js
-// 调用
-Client.answer()
-```
-
-
-
-### 挂断
-
-
-
-```js
-Client.hangup()
-```
-
-
-
-### 音量控制
-
-
-
-| 方法                    | 参数           | 说明              |
-| --------------------- | ------------ | --------------- |
-| getCurrentVolume      | 无            | 获取当前振声器         |
-| getCurrentMicroVolume | 无            | 获取当前麦克风         |
+| 方法                  | 参数         | 说明                     |
+|-----------------------|--------------|--------------------------|
+| answer                | 无           | 应答                     |
+| hangup                | 无           | 挂断                     |
+| minimize              | 无           | 窗口最小化               |
+| show                  | 无           | 窗口最大化               |
+| getCurrentVolume      | 无           | 获取当前振声器           |
+| getCurrentMicroVolume | 无           | 获取当前麦克风           |
 | setVolume             | {int} volume | 设置当前振声器音量 0-100 |
 | setMicroVolume        | {Int} volume | 设置当前麦克风音量 0-100 |
 
-
-
 用法
 
-
-
 ```js
+Client.answer()
+Client.hangup()
 Client.getCurrentVolume()
 Client.setVolume(20)
 ```
 
-
-
-### 响应
-
-
+## 响应 & 事件
 
 ```js
 // 成功返回
 {"jsonrpc":"2.0","result":"","id":1}
+// 收到事件
+{"jsonrpc":"2.0","result": {"events": "hangup"},"id":1}
 
 // 失败返回
 {"jsonrpc":"2.0","result":"失败原因","id":1}
 ```
 
+事件列表
 
+| 事件      | 说明       |
+|-----------|------------|
+| "hangup"  | 挂断事件   |
+| "answer"  | 来电事件   |
+| "calling" | 通话中事件 |
 
 需要注意的是，这里的结果返回是在`websocket` 回调中获取
 
 ```js
-Client.ws.onmessage = function (result) {
-  ...result
+Client.ws.onmessage = function (callback) {
+  ...callback
 };
 ```
-
-
 
 [查看案例](https://github.com/liushuixingyun/oneyun-sipclient-desktop-js-sdk/blob/master/example/index_jssdk.html)

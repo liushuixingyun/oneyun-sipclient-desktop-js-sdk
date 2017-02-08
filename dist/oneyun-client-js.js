@@ -1,5 +1,5 @@
 /*!
- * oneyun-client-js v0.1.0
+ * oneyun-client-js v0.1.3
  * https://github.com/liushuixingyun/oneyun-server-api-nodejs
  * Released under the MIT License.
  */
@@ -144,6 +144,14 @@ var Initrailler = function () {
 
   Initrailler.prototype.setMicroVolume = function setMicroVolume(number) {
     this._send('setMicroVolume', number);
+  };
+
+  Initrailler.prototype.minimize = function minimize() {
+    this._send('minimize');
+  };
+
+  Initrailler.prototype.show = function show() {
+    this._send('show');
   };
 
   return Initrailler;

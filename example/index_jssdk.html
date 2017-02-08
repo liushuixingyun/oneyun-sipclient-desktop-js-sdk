@@ -6,6 +6,16 @@
 <body>
     <form id="sendForm">
         <div>浏览器软电话</div>
+        <br/>
+        <a  href="Oneyun-SipClient://">启动壹耘电话</a>
+        <br/>
+        <br/>
+        <div>
+          <button onclick="show()" type="button">最大化</button>
+          <button onclick="minimize()" type="button">最小化</button>
+        </div>
+        <br/>
+        <br/>
         <div>
             <button onclick="answer()" type="button">接听</button>
             <button onclick="hangup()" type="button">挂断</button>
@@ -25,7 +35,7 @@
         <br/>
         <br/>
         <div>
-            <label for="">调节振声器音量</label>
+            <label for="">调节麦克风音量</label>
             <br/>
             <input type="text" value="" id="volumeMircoText" />
             <button onclick="setMircoVolume()" type="button">调节</button>
@@ -118,6 +128,16 @@ function getCurrentVolume() {
 function getCurrentMicroVolume() {
   client.getCurrentMicroVolume()
 }
+
+// 打开窗口
+function show() {
+  client.show()
+}
+// 最小化窗口
+function minimize() {
+  client.minimize()
+}
+
 
 function getValById(Id){
   return document.getElementById(Id).value
