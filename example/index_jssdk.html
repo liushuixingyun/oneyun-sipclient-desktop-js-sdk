@@ -9,6 +9,9 @@
         <div>
             <button onclick="answer()" type="button">接听</button>
             <button onclick="hangup()" type="button">挂断</button>
+            <button onclick="show()" type="button">显示</button>
+            <button onclick="hide()" type="button">隐藏</button>
+            <button onclick="getAccount()" type="button">获取账号信息</button>
             <button onclick="getCurrentVolume()" type="button">获取当前振声器音量</button>
             <button onclick="getCurrentMicroVolume()" type="button">获取当前麦克风音量</button>
         </div>
@@ -39,14 +42,14 @@
 <script src="../dist/oneyun-client-js.js"> </script>
 <script type="text/javascript">
 
-var client = new OneyunJSClient('ws://127.0.0.1:2000/')
+var client = new OneyunJSClient('ws://192.168.10.88:8430/')
 var inc = document.getElementById('incomming');
 
 inc.innerHTML += "connecting to server ..<br/>";
 
 function reconnect() {
     try {
-      client._createWS('ws://127.0.0.1:2000/')
+      client._createWS('ws://192.168.10.88:8430')
     } catch (e) {
       console.log('等待连接')
     }
@@ -80,6 +83,18 @@ function answer() {
 
 function hangup() {
   client.hangup()
+}
+
+function show() {
+  client.show()
+}
+
+function getAccount() {
+  client.getAccount()
+}
+
+function hide() {
+  client.hide()
 }
 
 // 设置扬声器音量

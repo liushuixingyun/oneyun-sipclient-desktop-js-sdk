@@ -105,11 +105,25 @@ var Initrailler = function () {
       method: method,
       params: params ? [].concat(params) : [],
       id: 1
-    }));
+    })
+    // console.log('method：', method, 'params: ', params)
+    );
+  };
+
+  Initrailler.prototype.getAccount = function getAccount() {
+    this._send('getAccount');
   };
 
   Initrailler.prototype.answer = function answer() {
     this._send('answer');
+  };
+
+  Initrailler.prototype.show = function show() {
+    this._send('show');
+  };
+
+  Initrailler.prototype.hide = function hide() {
+    this._send('hide');
   };
 
   Initrailler.prototype.hangup = function hangup() {

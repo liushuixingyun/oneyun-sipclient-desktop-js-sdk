@@ -16,11 +16,24 @@ export default class Initrailler {
         params: params ? [].concat(params) : [],
         id:1
       })
+      // console.log('method：', method, 'params: ', params)
     )
+  }
+
+  getAccount() {
+    this._send('getAccount')
   }
 
   answer() {
     this._send('answer')
+  }
+
+  show() {
+    this._send('show')
+  }
+
+  hide() {
+    this._send('hide')
   }
 
   hangup() {
