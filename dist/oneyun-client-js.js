@@ -1,5 +1,5 @@
 /*!
- * oneyun-client-js v0.1.3
+ * oneyun-client-js v0.1.4
  * https://github.com/liushuixingyun/oneyun-server-api-nodejs
  * Released under the MIT License.
  */
@@ -152,6 +152,11 @@ var Initrailler = function () {
 
   Initrailler.prototype.show = function show() {
     this._send('show');
+  };
+
+  Initrailler.prototype.setAccount = function setAccount(user, password, domain, timeout) {
+    var params = [user, password, domain, timeout];
+    this._send('setAccount', params);
   };
 
   return Initrailler;

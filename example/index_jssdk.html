@@ -40,6 +40,21 @@
             <input type="text" value="" id="volumeMircoText" />
             <button onclick="setMircoVolume()" type="button">调节</button>
         </div>
+
+      <br/>
+      <br/>
+      <div>
+        <label for="">设置 SIP 账户信息</label>
+        <br/>
+        SIP 注册的用户名 : <input type="text" value="10005888888" id="userText" /><br/>
+        SIP 注册的密码 : <input type="text" value="123456" id="passwordText" /><br/>
+        SIP 注册服务器地址 : <input type="text" value="sip.oneyun.com" id="domainText" /><br/>
+        注册过期时间(秒) : <input type="text" value="300" id="timeoutText" /><br/>
+        <button onclick="setAccount()" type="button">设置</button>
+      </div>
+
+
+
         <br/>
         <br/>
         <br/>
@@ -52,14 +67,14 @@
 <script src="../dist/oneyun-client-js.js"> </script>
 <script type="text/javascript">
 
-var client = new OneyunJSClient('ws://192.168.10.88:8430/')
+var client = new OneyunJSClient('ws://localhost:8430/')
 var inc = document.getElementById('incomming');
 
 inc.innerHTML += "connecting to server ..<br/>";
 
 function reconnect() {
     try {
-      client._createWS('ws://192.168.10.88:8430')
+      client._createWS('ws://localhost:8430')
     } catch (e) {
       console.log('等待连接')
     }
@@ -138,6 +153,14 @@ function minimize() {
   client.minimize()
 }
 
+// 设置SIP账号信息
+function setAccount() {
+  var user = getValById('userText')
+  var password = getValById('passwordText')
+  var domain = getValById('domainText')
+  var timeout = getValById('timeoutText')
+  client.setAccount(user,password,domain,timeout)
+}
 
 function getValById(Id){
   return document.getElementById(Id).value

@@ -11,6 +11,7 @@ export default class Initrailler {
 
   _send(method, params){
     this.ws.send(
+
       JSON.stringify({
         method: method,
         params: params ? [].concat(params) : [],
@@ -51,6 +52,7 @@ export default class Initrailler {
   setVolume(number) {
     this._send('setVolume', number)
   }
+
   setMicroVolume(number) {
     this._send('setMicroVolume', number)
   }
@@ -61,6 +63,11 @@ export default class Initrailler {
 
   show() {
     this._send('show')
+  }
+
+  setAccount(user, password, domain, timeout){
+    var params = [user,password,domain,timeout];
+    this._send('setAccount', params)
   }
 
 }

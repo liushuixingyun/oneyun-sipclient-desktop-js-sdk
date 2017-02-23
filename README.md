@@ -16,7 +16,7 @@ npm install oneyun-sipclient-desktop-js-sdk --save-dev
 
 ```js
 import JsClient from 'oneyun-sipclient-desktop-js-sdk'
-let Client = new jsClient('ws://192.168.10.75:2000/')
+let Client = new jsClient('ws://localhost:2000/')
 ```
 
 已用 [UMD](https://github.com/umdjs/umd#readme) 包装，因此它们可以直接用作 AMD 模块
@@ -28,7 +28,7 @@ let Client = new jsClient('ws://192.168.10.75:2000/')
 <script src="./node_modules/oneyun-sipclient-desktop-js-sdk/dist/oneyun-client-js.js"> </script>
 
 // 创建实例
-var Client = new OneYunJsSipClient('ws://192.168.10.75:2000/')
+var Client = new OneYunJsSipClient('ws://localhost:2000/')
 ```
 
 ## 接口
@@ -43,6 +43,7 @@ var Client = new OneYunJsSipClient('ws://192.168.10.75:2000/')
 | getCurrentMicroVolume | 无           | 获取当前麦克风           |
 | setVolume             | {int} volume | 设置当前振声器音量 0-100 |
 | setMicroVolume        | {Int} volume | 设置当前麦克风音量 0-100 |
+| setAccount            | {string} user, {string} password, {string} domain, {unit} timeout | 设置 SIP 账户信息|
 
 用法
 
@@ -51,6 +52,7 @@ Client.answer()
 Client.hangup()
 Client.getCurrentVolume()
 Client.setVolume(20)
+Client.setAccount('100001888888','123456','sip.oneyun.com',300);
 ```
 
 ## 响应 & 事件
