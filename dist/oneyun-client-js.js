@@ -104,7 +104,7 @@ var Initrailler = function () {
     this.ws.send(JSON.stringify({
       method: method,
       params: params ? [].concat(params) : [],
-      id: 1
+      id: method
     })
     // console.log('method：', method, 'params: ', params)
     );
