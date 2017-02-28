@@ -1,6 +1,6 @@
 {
   "name": "oneyun-sipclient-desktop-js-sdk",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "onyun node sdk",
   "main": "dist/oneyun-client-js.js",
   "scripts": {
